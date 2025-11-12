@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grayforge Interactive - Forging the Future of Games</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800;900&family=Fredoka:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-purple: #6C5CE7;
+            --primary-pink: #FF6B9D;
+            --primary-orange: #FF8B3D;
+            --primary-yellow: #FFD93D;
+            --primary-cyan: #00D9FF;
+            --primary-green: #00DFA2;
+            --bg-light: #F8F9FF;
+            --bg-white: #FFFFFF;
+            --text-dark: #2D3436;
+            --text-gray: #636E72;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: var(--bg-light);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1.2rem 5%;
+            box-shadow: 0 4px 30px rgba(108, 92, 231, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-pink), var(--primary-orange));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            cursor: pointer;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-purple);
+            transform: translateY(-2px);
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-purple);
+            transition: 0.3s;
+            border-radius: 10px;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #E0C3FC 0%, #8EC5FC 100%);
+            padding-top: 80px;
+        }
+
+        .floating-shapes {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.6;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape-1 {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(135deg, var(--primary-pink), var(--primary-orange));
+            border-radius: 50%;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-green));
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .shape-3 {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--primary-yellow), var(--primary-orange));
+            border-radius: 20px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+            transform: rotate(45deg);
+        }
+
+        .shape-4 {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-pink));
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            top: 30%;
+            right: 25%;
+            animation-delay: 6s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            25% {
+                transform: translateY(-30px) rotate(90deg);
+            }
+            50% {
+                transform: translateY(20px) rotate(180deg);
+            }
+            75% {
+                transform: translateY(-20px) rotate(270deg);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            padding: 0 2rem;
+        }
+
+        .hero-logo {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            animation: bounceIn 1s ease-out;
+            letter-spacing: 2px;
+            text-shadow: 0 10px 30px rgba(108, 92, 231, 0.3);
+        }
+
+        @keyframes bounceIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.3);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.05);
+            }
+            70% {
+                transform: scale(0.9);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .tagline {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.8rem;
+            color: var(--text-dark);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease-out 0.5s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.7s both;
+        }
+
+        .btn {
+            padding: 1.2rem 3rem;
+            font-family: 'Fredoka', sans-serif;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.3);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-pink));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(108, 92, 231, 0.5);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-purple);
+            border: 3px solid var(--primary-purple);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-purple);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-gray);
+            margin-bottom: 4rem;
+            font-size: 1.2rem;
+        }
+
+        /* Team Section */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3rem;
+        }
+
+        .team-card {
+            background: white;
+            border-radius: 30px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(108, 92, 231, 0.15);
+        }
+
+        .team-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-purple), var(--primary-pink), var(--primary-orange));
+        }
+
+        .team-card:hover {
+            transform: translateY(-15px) rotate(2deg);
+            box-shadow: 0 20px 60px rgba(108, 92, 231, 0.3);
+        }
+
+        .team-avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-green));
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            border: 5px solid white;
+            box-shadow: 0 10px 30px rgba(0, 217, 255, 0.3);
+        }
+
+        .team-name {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary-purple);
+        }
+
+        .team-role {
+            color: var(--text-gray);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        /* Games Section */
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .game-card {
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            transition: all 0.4s;
+            box-shadow: 0 10px 40px rgba(108, 92, 231, 0.15);
+        }
+
+        .game-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 25px 70px rgba(108, 92, 231, 0.3);
+        }
+
+        .game-image {
+            width: 100%;
+            height: 250px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-pink));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .game-image.alt-1 {
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-green));
+        }
+
+        .game-image.alt-2 {
+            background: linear-gradient(135deg, var(--primary-orange), var(--primary-yellow));
+        }
+
+        .game-content {
+            padding: 2rem;
+        }
+
+        .game-title {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--primary-purple);
+        }
+
+        .game-description {
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        /* About Section */
+        .about-content {
+            background: white;
+            border-radius: 30px;
+            padding: 3.5rem;
+            box-shadow: 0 10px 40px rgba(108, 92, 231, 0.15);
+        }
+
+        .about-content h3 {
+            font-family: 'Fredoka', sans-serif;
+            color: var(--primary-purple);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        .about-content p {
+            line-height: 1.8;
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Careers Section */
+        .careers-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .job-list {
+            background: white;
+            border-radius: 30px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 40px rgba(108, 92, 231, 0.15);
+        }
+
+        .job-item {
+            padding: 2rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, rgba(108, 92, 231, 0.05), rgba(255, 107, 157, 0.05));
+            border-radius: 20px;
+            border-left: 5px solid var(--primary-purple);
+            transition: all 0.3s;
+        }
+
+        .job-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 20px rgba(108, 92, 231, 0.2);
+        }
+
+        .job-item h3 {
+            font-family: 'Fredoka', sans-serif;
+            color: var(--primary-purple);
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        /* Contact Form */
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-form {
+            background: white;
+            border-radius: 30px;
+            padding: 3.5rem;
+            box-shadow: 0 10px 40px rgba(108, 92, 231, 0.15);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            color: var(--primary-purple);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 1.2rem;
+            background: rgba(108, 92, 231, 0.05);
+            border: 2px solid rgba(108, 92, 231, 0.2);
+            border-radius: 15px;
+            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-purple);
+            background: white;
+            box-shadow: 0 5px 20px rgba(108, 92, 231, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contact-info {
+            margin-top: 3rem;
+            text-align: center;
+        }
+
+        .contact-info p {
+            color: var(--text-gray);
+            margin: 0.8rem 0;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-pink));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-size: 1.8rem;
+            box-shadow: 0 8px 25px rgba(108, 92, 231, 0.3);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-8px) scale(1.1);
+            box-shadow: 0 15px 40px rgba(108, 92, 231, 0.5);
+        }
+
+        /* Newsletter */
+        .newsletter {
+            background: linear-gradient(135deg, var(--primary-purple), var(--primary-pink));
+            border-radius: 30px;
+            padding: 4rem;
+            text-align: center;
+            margin: 5rem 0;
+            box-shadow: 0 20px 60px rgba(108, 92, 231, 0.4);
+        }
+
+        .newsletter h3 {
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .newsletter p {
+            color: white;
+            opacity: 0.9;
+            font-size: 1.2rem;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 600px;
+            margin: 2rem auto 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1.2rem 1.5rem;
+            background: white;
+            border: none;
+            border-radius: 50px;
+            color: var(--text-dark);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+        }
+
+        .newsletter-form .btn {
+            background: white;
+            color: var(--primary-purple);
+        }
+
+        .newsletter-form .btn:hover {
+            background: var(--primary-orange);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: white;
+            padding: 4rem 5%;
+            box-shadow: 0 -5px 30px rgba(108, 92, 231, 0.1);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Fredoka', sans-serif;
+            color: var(--primary-purple);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-purple);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 2px solid rgba(108, 92, 231, 0.1);
+            color: var(--text-gray);
+        }
+
+        /* Hide sections initially */
+        .page-section {
+            display: none;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* Fun decorative elements */
+        .emoji-float {
+            position: fixed;
+            font-size: 3rem;
+            opacity: 0.3;
+            animation: floatEmoji 15s infinite ease-in-out;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes floatEmoji {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-50px) rotate(180deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero-logo {
+                font-size: 2.8rem;
+            }
+
+            .tagline {
+                font-size: 1.4rem;
+            }
+
+            section {
+                padding: 4rem 5%;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Decorative floating emojis -->
+    <div class="emoji-float" style="top: 15%; left: 5%;">🎮</div>
+    <div class="emoji-float" style="top: 70%; right: 8%; animation-delay: 2s;">🚀</div>
+    <div class="emoji-float" style="top: 45%; left: 85%; animation-delay: 4s;">⭐</div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo" onclick="showPage('home')">GRAYFORGE</div>
+            <ul class="nav-links">
+                <li><a href="#home" onclick="showPage('home')">Home</a></li>
+                <li><a href="#about" onclick="showPage('about')">About</a></li>
+                <li><a href="#games" onclick="showPage('games')">Games</a></li>
+                <li><a href="#careers" onclick="showPage('careers')">Careers</a></li>
+                <li><a href="#contact" onclick="showPage('contact')">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home" class="page-section active">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="floating-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+            </div>
+            <div class="hero-content">
+                <h1 class="hero-logo">GRAYFORGE INTERACTIVE</h1>
+                <p class="tagline">✨ Forging the Future of Games ✨</p>
+                <p class="hero-description">
+                    We are a passionate indie game development studio dedicated to creating immersive, fun, and innovative gaming experiences. 
+                    At Grayforge Interactive, we blend cutting-edge technology with creative storytelling to forge unforgettable digital worlds! 🎮
+                </p>
+                <div class="cta-buttons">
+                    <a href="#about" class="btn btn-primary" onclick="showPage('about')">Learn More 🚀</a>
+                    <a href="#games" class="btn btn-secondary" onclick="showPage('games')">View Our Games 🎯</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section id="team">
+            <h2 class="section-title">Meet Our Amazing Team! 👋</h2>
+            <p class="section-subtitle">The creative minds behind Grayforge Interactive</p>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">🎨</div>
+                    <h3 class="team-name">[Your Name]</h3>
+                    <p class="team-role">CEO & Founder</p>
+                    <p class="team-description">Visionary leader driving innovation and creative excellence in game development.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">💻</div>
+                    <h3 class="team-name">[Co-founder 1]</h3>
+                    <p class="team-role">Co-Founder & CTO</p>
+                    <p class="team-description">Technical mastermind architecting the future of interactive experiences.</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">🎯</div>
+                    <h3 class="team-name">[Co-founder 2]</h3>
+                    <p class="team-role">Co-Founder & Creative Director</p>
+                    <p class="team-description">Creative genius crafting compelling narratives and stunning visual worlds.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Games Preview Section -->
+        <section id="games-preview">
+            <h2 class="section-title">Our Awesome Games! 🎮</h2>
+            <p class="section-subtitle">Explore our portfolio of immersive gaming experiences</p>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-image">🚀</div>
+                    <div class="game-content">
+                        <h3 class="game-title">Project Alpha</h3>
+                        <p class="game-description">An epic sci-fi adventure that takes you across galaxies in a quest to save humanity from extinction. Amazing graphics and thrilling gameplay!</p>
+                        <a href="#games" class="btn btn-primary" onclick="showPage('games')">View Details</a>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image alt-1">🎯</div>
+                    <div class="game-content">
+                        <h3 class="game-title">Shadow Nexus</h3>
+                        <p class="game-description">A cyberpunk tactical shooter where strategy meets adrenaline in neon-lit megacities. Fast-paced action awaits!</p>
+                        <a href="#games" class="btn btn-primary" onclick="showPage('games')">View Details</a>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image alt-2">⚔️</div>
+                    <div class="game-content">
+                        <h3 class="game-title">Forge Legends</h3>
+                        <p class="game-description">Build your legacy in this fantasy RPG where every choice shapes the world around you. Epic adventures await!</p>
+                        <a href="#games" class="btn btn-primary" onclick="showPage('games')">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="newsletter">
+            <h3>Stay in the Loop! 📬</h3>
+            <p class="section-subtitle">Subscribe for the latest game updates and exclusive content</p>
+            <form class="newsletter-form" onsubmit="return false;">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn">Subscribe Now!</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- About Page -->
+    <div id="about" class="page-section">
+        <section style="padding-top: 120px;">
+            <h2 class="section-title">About Grayforge Interactive 🌟</h2>
+            <p class="section-subtitle">Our Story, Mission & Vision</p>
+            <div class="about-content">
+                <h3>🎮 Our Story</h3>
+                <p>
+                    Grayforge Interactive was born from a shared passion for gaming and a dream to create experiences that push the boundaries of interactive entertainment. Founded in 2024 by a team of dedicated developers, artists, and storytellers, we started with a simple mission: to forge games that matter.
+                </p>
+                <p>
+                    What began as late-night brainstorming sessions and weekend coding marathons has grown into a full-fledged indie studio. We believe that games are more than just entertainment—they're art, they're experiences, and they're portals to worlds limited only by imagination.
+                </p>
+
+                <h3>🎯 Our Mission</h3>
+                <p>
+                    At Grayforge Interactive, our mission is to create immersive, innovative, and unforgettable gaming experiences that resonate with players worldwide. We strive to blend cutting-edge technology with compelling narratives, stunning visuals, and engaging gameplay mechanics that keep players coming back for more.
+                </p>
+
+                <h3>🚀 Our Vision</h3>
+                <p>
+                    We envision a future where Grayforge Interactive stands among the most respected game studios in the industry—known for our creativity, technical excellence, and commitment to player satisfaction. We aim to build a diverse portfolio of games across multiple genres, each one a testament to our dedication to quality and innovation.
+                </p>
+
+                <h3>💎 Our Values</h3>
+                <p>
+                    <strong>Creativity:</strong> We embrace bold ideas and encourage innovative thinking in every aspect of game development.
+                </p>
+                <p>
+                    <strong>Excellence:</strong> We are committed to delivering high-quality games that exceed player expectations.
+                </p>
+                <p>
+                    <strong>Collaboration:</strong> We believe in the power of teamwork and value every voice in our creative process.
+                </p>
+                <p>
+                    <strong>Player-First:</strong> Our players are at the heart of everything we do. Their feedback drives our evolution.
+                </p>
+            </div>
+        </section>
+
+        <section id="team-full">
+            <h2 class="section-title">Our Founders 👥</h2>
+            <p class="section-subtitle">The visionaries behind Grayforge Interactive</p>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">🎨</div>
+                    <h3 class="team-name">[Your Name]</h3>
+                    <p class="team-role">CEO & Founder</p>
+                    <p class="team-description">
+                        With over 10 years of experience in game development and a passion for creating innovative experiences, [Your Name] leads Grayforge with a vision to revolutionize indie gaming. Their expertise in game design and business strategy drives the studio's success.
+                    </p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">💻</div>
+                    <h3 class="team-name">[Co-founder 1]</h3>
+                    <p class="team-role">Co-Founder & CTO</p>
+                    <p class="team-description">
+                        A technical wizard with a background in cutting-edge game engines and AI systems, [Co-founder 1] ensures Grayforge's games leverage the latest technology. Their innovative approach to problem-solving keeps the studio at the forefront of game tech.
+                    </p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">🎯</div>
+                    <h3 class="team-name">[Co-founder 2]</h3>
+                    <p class="team-role">Co-Founder & Creative Director</p>
+                    <p class="team-description">
+                        An award-winning artist and storyteller, [Co-founder 2] brings worlds to life with stunning visuals and compelling narratives. Their creative vision shapes the unique aesthetic and emotional depth of every Grayforge game.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Games Page -->
+    <div id="games" class="page-section">
+        <section style="padding-top: 120px;">
+            <h2 class="section-title">Our Games Portfolio 🎮</h2>
+            <p class="section-subtitle">Discover the worlds we've created</p>
+            <div class="games-grid">
+                <div class="game-card">
+                    <div class="game-image">🚀</div>
+                    <div class="game-content">
+                        <h3 class="game-title">Project Alpha</h3>
+                        <p class="game-description">
+                            An epic sci-fi adventure that takes you across galaxies in a quest to save humanity from extinction. Features stunning visuals, deep character progression, and a branching narrative that adapts to your choices.
+                        </p>
+                        <a href="javascript:void(0)" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image alt-1">🎯</div>
+                    <div class="game-content">
+                        <h3 class="game-title">Shadow Nexus</h3>
+                        <p class="game-description">
+                            A cyberpunk tactical shooter where strategy meets adrenaline in neon-lit megacities. Master advanced combat systems, customize your loadout, and uncover corporate conspiracies in a dystopian future.
+                        </p>
+                        <a href="javascript:void(0)" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image alt-2">⚔️</div>
+                    <div class="game-content">
+                        <h3 class="game-title">Forge Legends</h3>
+                        <p class="game-description">
+                            Build your legacy in this fantasy RPG where every choice shapes the world around you. Explore vast kingdoms, master magical abilities, and forge alliances in an ever-evolving world.
+                        </p>
+                        <a href="javascript:void(0)" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image">🌌</div>
+                    <div class="game-content">
+                        <h3 class="game-title">Stellar Drift</h3>
+                        <p class="game-description">
+                            A space exploration roguelike where you pilot your ship through procedurally generated star systems. Gather resources, upgrade your vessel, and survive the dangers of deep space.
+                        </p>
+                        <a href="javascript:void(0)" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image alt-1">🏰</div>
+                    <div class="game-content">
+                        <h3 class="game-title">Kingdom Architect</h3>
+                        <p class="game-description">
+                            A city-building strategy game with a twist. Design your medieval kingdom, manage resources, defend against invaders, and watch your civilization flourish through the ages.
+                        </p>
+                        <a href="javascript:void(0)" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+                <div class="game-card">
+                    <div class="game-image alt-2">🔮</div>
+                    <div class="game-content">
+                        <h3 class="game-title">Coming Soon...</h3>
+                        <p class="game-description">
+                            We're working on something special. An ambitious new project that will redefine what players expect from indie games. Stay tuned for announcements!
+                        </p>
+                        <a href="javascript:void(0)" class="btn btn-secondary" onclick="showPage('contact')">Get Notified</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Careers Page -->
+    <div id="careers" class="page-section">
+        <section style="padding-top: 120px;">
+            <div class="careers-content">
+                <h2 class="section-title">Join Our Team! 🚀</h2>
+                <p class="section-subtitle">Be part of something extraordinary</p>
+                
+                <div class="about-content" style="margin-bottom: 3rem;">
+                    <p>
+                        At Grayforge Interactive, we're always looking for talented, passionate individuals who share our vision for creating exceptional gaming experiences. Whether you're a developer, artist, designer, or storyteller, if you have a love for games and a drive to innovate, we want to hear from you!
+                    </p>
+                    <p>
+                        We offer a collaborative work environment, competitive compensation, flexible working arrangements, and the opportunity to work on exciting projects that push the boundaries of gaming.
+                    </p>
+                </div>
+
+                <div class="job-list">
+                    <h3 style="font-family: 'Fredoka', sans-serif; color: var(--primary-purple); margin-bottom: 2rem; font-size: 2rem;">Open Positions 💼</h3>
+                    
+                    <div class="job-item">
+                        <h3>Senior Game Developer</h3>
+                        <p style="color: var(--text-gray);">We're looking for an experienced game developer proficient in Unity/Unreal Engine to help bring our vision to life.</p>
+                    </div>
+                    
+                    <div class="job-item">
+                        <h3>3D Artist</h3>
+                        <p style="color: var(--text-gray);">Join our art team to create stunning 3D models, environments, and characters for our upcoming titles.</p>
+                    </div>
+                    
+                    <div class="job-item">
+                        <h3>Game Designer</h3>
+                        <p style="color: var(--text-gray);">Help design engaging gameplay mechanics, level layouts, and player progression systems.</p>
+                    </div>
+                    
+                    <div class="job-item">
+                        <h3>Sound Designer</h3>
+                        <p style="color: var(--text-gray);">Create immersive audio experiences, from ambient soundscapes to epic musical scores.</p>
+                    </div>
+                    
+                    <div class="job-item">
+                        <h3>QA Tester</h3>
+                        <p style="color: var(--text-gray);">Ensure our games meet the highest quality standards through rigorous testing and bug reporting.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 3rem;">
+                    <p style="color: var(--text-gray); margin-bottom: 2rem;">
+                        Don't see a position that matches your skills? We're always interested in connecting with talented individuals. Send us your portfolio and let us know how you can contribute to Grayforge Interactive.
+                    </p>
+                    <a href="javascript:void(0)" class="btn btn-primary" onclick="showPage('contact')">Submit Application</a>
+                    <a href="mailto:careers@grayforgeinteractive.com" class="btn btn-secondary">Email Your Resume</a>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Contact Page -->
+    <div id="contact" class="page-section">
+        <section style="padding-top: 120px;">
+            <h2 class="section-title">Get In Touch! 💬</h2>
+            <p class="section-subtitle">We'd love to hear from you</p>
+            
+            <div class="contact-container">
+                <div class="contact-form">
+                    <form onsubmit="handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" placeholder="John Doe" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" placeholder="john@example.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" name="subject" placeholder="What is this regarding?" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" placeholder="Tell us more..." required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message 📧</button>
+                    </form>
+                </div>
+
+                <div class="contact-info">
+                    <h3 style="font-family: 'Fredoka', sans-serif; color: var(--primary-purple); margin-bottom: 1.5rem; font-size: 2rem;">Contact Information 📞</h3>
+                    <p><strong>Email:</strong> info@grayforgeinteractive.com</p>
+                    <p><strong>Careers:</strong> careers@grayforgeinteractive.com</p>
+                    <p><strong>Press:</strong> press@grayforgeinteractive.com</p>
+                    <p><strong>Location:</strong> San Francisco, CA (Remote-Friendly)</p>
+
+                    <div class="social-links">
+                        <a href="javascript:void(0)" title="Instagram">📷</a>
+                        <a href="javascript:void(0)" title="Twitter/X">🐦</a>
+                        <a href="javascript:void(0)" title="YouTube">📺</a>
+                        <a href="javascript:void(0)" title="Discord">💬</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>GRAYFORGE INTERACTIVE</h4>
+                <p style="color: var(--text-gray); line-height: 1.6;">
+                    Forging the future of games with passion, innovation, and creativity. Join us on our journey to create unforgettable gaming experiences! 🎮✨
+                </p>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="javascript:void(0)" onclick="showPage('home')">Home</a></li>
+                    <li><a href="javascript:void(0)" onclick="showPage('about')">About Us</a></li>
+                    <li><a href="javascript:void(0)" onclick="showPage('games')">Our Games</a></li>
+                    <li><a href="javascript:void(0)" onclick="showPage('careers')">Careers</a></li>
+                    <li><a href="javascript:void(0)" onclick="showPage('contact')">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Connect With Us</h4>
+                <ul class="footer-links">
+                    <li><a href="javascript:void(0)">Instagram</a></li>
+                    <li><a href="javascript:void(0)">Twitter / X</a></li>
+                    <li><a href="javascript:void(0)">YouTube</a></li>
+                    <li><a href="javascript:void(0)">Discord</a></li>
+                    <li><a href="javascript:void(0)">LinkedIn</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h4>Newsletter</h4>
+                <p style="color: var(--text-gray); margin-bottom: 1rem;">Stay updated with our latest news and releases.</p>
+                <form class="newsletter-form" onsubmit="return false;" style="margin: 0; flex-direction: column; align-items: stretch;">
+                    <input type="email" placeholder="Your email" required style="margin-bottom: 0.8rem; border-radius: 15px;">
+                    <button type="submit" class="btn btn-primary" style="border-radius: 15px;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 Grayforge Interactive. All Rights Reserved.</p>
+            <p style="margin-top: 0.5rem;">Crafted with passion and powered by innovation 💜</p>
+        </div>
+    </footer>
+
+    <script>
+        // Page Navigation Function
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page-section');
+            pages.forEach(page => {
+                page.classList.remove('active');
+                page.style.display = 'none';
+            });
+            
+            // Show selected page
+            const selectedPage = document.getElementById(pageId);
+            if (selectedPage) {
+                selectedPage.classList.add('active');
+                selectedPage.style.display = 'block';
+            }
+            
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Update nav active state
+            updateNavActiveState(pageId);
+            
+            return false;
+        }
+
+        // Update navigation active state
+        function updateNavActiveState(activePageId) {
+            const navLinks = document.querySelectorAll('.nav-links a');
+            navLinks.forEach(link => {
+                const href = link.getAttribute('href');
+                if (href === '#' + activePageId) {
+                    link.style.color = 'var(--primary-purple)';
+                    link.style.fontWeight = '700';
+                } else {
+                    link.style.color = 'var(--text-dark)';
+                    link.style.fontWeight = '600';
+                }
+            });
+        }
+
+        // Form Submission Handler
+        function handleSubmit(event) {
+            event.preventDefault();
+            const formData = new FormData(event.target);
+            const data = Object.fromEntries(formData);
+            
+            alert('✅ Thank you for your message! We\'ll get back to you soon.\n\nNote: This is a demo. In production, this would send to: info@grayforgeinteractive.com');
+            event.target.reset();
+            return false;
+        }
+
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+        
+        if (mobileMenu) {
+            mobileMenu.addEventListener('click', () => {
+                if (navLinks.style.display === 'flex') {
+                    navLinks.style.display = 'none';
+                } else {
+                    navLinks.style.display = 'flex';
+                    navLinks.style.position = 'absolute';
+                    navLinks.style.top = '100%';
+                    navLinks.style.left = '0';
+                    navLinks.style.width = '100%';
+                    navLinks.style.flexDirection = 'column';
+                    navLinks.style.background = 'white';
+                    navLinks.style.padding = '2rem';
+                    navLinks.style.gap = '1.5rem';
+                    navLinks.style.boxShadow = '0 10px 30px rgba(108, 92, 231, 0.2)';
+                }
+            });
+        }
+
+        // Add scroll effect to nav
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 50) {
+                nav.style.boxShadow = '0 5px 40px rgba(108, 92, 231, 0.2)';
+            } else {
+                nav.style.boxShadow = '0 4px 30px rgba(108, 92, 231, 0.1)';
+            }
+        });
+
+        // Add intersection observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.game-card, .team-card, .job-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Initialize: Make sure home page is visible on load
+        document.addEventListener('DOMContentLoaded', () => {
+            showPage('home');
+        });
+    </script>
+</body>
+</html>
