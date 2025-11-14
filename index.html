@@ -1074,34 +1074,47 @@
             
             <div class="contact-container">
                 <div class="contact-form">
-                    <form action="https://api.web3forms.com/submit" method="POST" onsubmit="handleSubmit(event)">
+                    <form action="https://api.web3forms.com/submit" method="POST" id="contactForm">
+                        <!-- Web3Forms Access Key -->
                         <input type="hidden" name="access_key" value="7a398295-8e3a-43bc-8d52-bb44b8030398">
-                        <input type="hidden" name="redirect" value="false">
+                        
+                        <!-- Email subject configuration -->
+                        <input type="hidden" name="subject" value="New Contact Form Submission - Greyforge Interactive">
+                        
+                        <!-- From name for professional emails -->
+                        <input type="hidden" name="from_name" value="Greyforge Interactive Website">
                         
                         <div class="form-group">
-                            <label for="name">Your Name</label>
+                            <label for="name">Your Name ✨</label>
                             <input type="text" id="name" name="name" placeholder="John Doe" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Email Address</label>
+                            <label for="email">Email Address 📧</label>
                             <input type="email" id="email" name="email" placeholder="john@example.com" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" placeholder="What is this regarding?" required>
+                            <label for="inquiry_type">Subject 💬</label>
+                            <input type="text" id="inquiry_type" name="inquiry_type" placeholder="What is this regarding?" required>
                         </div>
                         
                         <div class="form-group">
-                            <label for="message">Your Message</label>
-                            <textarea id="message" name="message" placeholder="Tell us more..." required></textarea>
+                            <label for="message">Your Message 💭</label>
+                            <textarea id="message" name="message" placeholder="Tell us more about your inquiry..." required></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message 📧</button>
+                        <!-- Honeypot spam protection -->
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                        
+                        <button type="submit" class="btn btn-primary" id="submitBtn" style="width: 100%;">
+                            <span class="btn-text">Send Message 🚀</span>
+                        </button>
+                        
+                        <div id="formMessage" class="form-message"></div>
                     </form>
                 </div>
-                
+
                 <div class="contact-info">
                     <h3 style="font-family: 'Fredoka', sans-serif; color: var(--primary-purple); margin-bottom: 1.5rem; font-size: 2rem;">Contact Information 📞</h3>
                     <p><strong>Email:</strong> greyforgeinteractive@gmail.com</p>
