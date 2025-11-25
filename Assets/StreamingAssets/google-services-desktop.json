@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "909242533752",
+    "project_id": "tankarenaonline",
+    "storage_bucket": "tankarenaonline.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:909242533752:android:cfc80b39c12bba45bf6a8d",
+        "android_client_info": {
+          "package_name": "com.greyforgeinteractive.tankarena"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBsO3Wa8zMtZFHQ1yKV39VJW7n3fTYHQqw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
